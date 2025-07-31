@@ -18,7 +18,6 @@ import com.example.noteapp.model.Note
 import com.example.noteapp.viewmodel.NoteViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextListener {
-
     private var _binding  : FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -27,7 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
+
     }
 
     override fun onCreateView(
@@ -35,8 +35,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(
+            inflater,
+            container,
+            false
+        )
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,6 +55,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
                 R.id.action_homeFragment_to_newNoteFragment
             )
         }
+
     }
 
     private fun setUpRecyclerView() {
@@ -72,6 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
                 }
             )
         }
+
     }
 
     private fun updateUI(note: List<Note>) {
@@ -82,6 +89,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
             binding.cardView.visibility = View.VISIBLE
             binding.recyclerView.visibility = View.GONE
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -93,11 +101,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
         val mMenuSearch = menu.findItem(R.id.menu_search).actionView as SearchView
         mMenuSearch.isSubmitButtonEnabled = false
         mMenuSearch.setOnQueryTextListener(this)
+
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         // searchNote(query)
         return false
+
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
@@ -106,6 +116,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
         }
 
         return true
+
     }
 
     private fun searchNote(query: String?) {
