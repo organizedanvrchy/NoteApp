@@ -11,5 +11,5 @@ data class Note(
     @PrimaryKey
     val id: Int,
     val noteTitle: String,
-    val notBody: String
+    val noteBody: String
 ):Parcelable
