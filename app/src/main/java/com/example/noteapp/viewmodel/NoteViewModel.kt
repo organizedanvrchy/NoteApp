@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class NoteViewModel(
     app: Application,
-    private val noteRepository: NoteRepository) :
+    private val noteRepository: NoteRepository):
     AndroidViewModel(app)
 {
     fun addNote(note: Note) =
@@ -21,12 +21,14 @@ class NoteViewModel(
         viewModelScope.launch {
             noteRepository.deleteNote(note)
         }
+
     }
 
     fun updateNote(note: Note) {
         viewModelScope.launch {
             noteRepository.updateNote(note)
         }
+
     }
 
     fun getAllNotes() =

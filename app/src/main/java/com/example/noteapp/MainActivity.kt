@@ -1,16 +1,42 @@
 package com.example.noteapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.noteapp.database.NoteDatabase
+import com.example.noteapp.databinding.ActivityMainBinding
+import com.example.noteapp.repository.NoteRepository
 import com.example.noteapp.viewmodel.NoteViewModel
+import com.example.noteapp.viewmodel.NoteViewModelFactory
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupViewModel()
+
+    }
+
+    private fun setupViewModel() {
+        val noteRepository = NoteRepository(
+            NoteDatabase(this)
+        )
+
+        val viewModelProviderFactory = NoteViewModelFactory(
+            application,
+            noteRepository
+        )
+
+        noteViewModel = ViewModelProvider(
+            this,
+            viewModelProviderFactory
+        ).get(NoteViewModel::class.java)
     }
 }
+

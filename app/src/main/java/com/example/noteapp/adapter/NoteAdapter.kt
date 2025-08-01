@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.noteapp.R
 import com.example.noteapp.databinding.NoteLayoutBinding
 import com.example.noteapp.fragments.HomeFragmentDirections
 import com.example.noteapp.model.Note
@@ -56,6 +57,15 @@ class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         )
 
         holder.itemBinding.ibColor.setBackgroundColor(color)
+
+        // Apply top margin only to the first item
+        val layoutParams = holder.itemView.layoutParams as ViewGroup.MarginLayoutParams
+        layoutParams.topMargin = if (position == 0 || position == 1) {
+            holder.itemView.context.resources.getDimensionPixelSize(R.dimen.first_item_top_margin)
+        } else {
+            0
+        }
+        holder.itemView.layoutParams = layoutParams
 
         holder.itemView.setOnClickListener {
             val direction = HomeFragmentDirections.

@@ -2,7 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#e4dece</color>
-    <color name="colorNote">#e4dece</color>
-    <color name="hintColor">#9c9483</color>
+    <color name="colorPrimary">#ab1c24</color>
+    <color name="colorNote">#ffc600</color>
+    <color name="hintColor">#aaaaaa</color>
+    <color name="colorNoteBackground">#f8f8ff</color>
 </resources>

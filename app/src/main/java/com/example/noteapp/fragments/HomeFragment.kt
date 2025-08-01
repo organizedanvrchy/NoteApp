@@ -125,6 +125,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) , SearchView.OnQueryTextLi
             this,
             { list -> noteAdapter.differ.submitList(list) }
         )
+
     }
 
     override fun onDestroy() {

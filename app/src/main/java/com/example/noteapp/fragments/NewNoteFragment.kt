@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import com.example.noteapp.MainActivity
 import com.example.noteapp.R
@@ -92,12 +91,6 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.menu_save -> {
@@ -105,5 +98,12 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
             }
         }
         return super.onOptionsItemSelected(item)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+
     }
 }
